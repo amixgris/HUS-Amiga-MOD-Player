@@ -100,18 +100,13 @@ __asm
 	push de
 	push hl
 	push af
-
-	ld a,#6
-	add a,l
-	ld l,a
-	jr nc,1$
-	inc h
-1$:	
+	ld  a,c
+	ld bc,#6
+	add hl,bc
 	ld (hl),e
 	inc hl
 	inc hl
-	ld  a,c
-	and a,#0x3f
+	and a,#0x3f	
 	ld (hl),a
 	inc hl
 	inc hl
