@@ -11,15 +11,15 @@ __sfr __banked __at   HUS_BASE + 5 HUS_AudioTmrHi;
 __sfr __banked __at   HUS_BASE + 6 HUS_ChanNum;
 __sfr __banked __at   HUS_BASE + 7 HUS_SampVol;
 
-#define HUS_BW8			0
-#define HUS_BW16		1 << 7
-#define HUS_MONO		0
-#define HUS_STEREO		1 << 6
-#define HUS_UNSIGN		0
-#define HUS_SIGNED		1 << 5
-#define HUS_NORETRIG	0	   // ?
+#define HUS_BW8		0
+#define HUS_BW16	1 << 7
+#define HUS_MONO	0
+#define HUS_STEREO	1 << 6
+#define HUS_UNSIGN	0
+#define HUS_SIGNED	1 << 5
+#define HUS_NORETRIG	0      // ?
 #define HUS_RETRIGGED	1 << 2 // ?
-#define HUS_CH_OFF		0x00
+#define HUS_CH_OFF	0x00
 #define HUS_CH_NOLOOP	0x01
 #define HUS_CH_FWDLOOP	0x02
 #define HUS_CH_BIDILOOP	0x03
@@ -44,9 +44,9 @@ typedef struct {
 void chcmd_StartAddr(HUS_CHCMD* chan, unsigned char* sample, unsigned char page) __naked
 {	chan, sample, page;
 __asm
-	pop	af
-	pop	hl	; struct ptr
-	pop	de	; sample addr
+	pop af
+	pop hl	; struct ptr
+	pop de	; sample addr
 	pop bc	; sample page in C
 	push bc
 	push de
@@ -57,7 +57,7 @@ __asm
 	inc hl
 	ld (hl),d
 	inc hl
-	ld	a,c
+	ld a,c
 	and a,#0x3f
 	ld (hl),a
 	ret
@@ -66,9 +66,9 @@ __endasm;
 void chcmd_EndtAddr(HUS_CHCMD* chan, unsigned char* sample, unsigned char page) __naked
 {	chan, sample, page;
 __asm
-	pop	af
-	pop	hl	; struct ptr
-	pop	de	; sample addr
+	pop af
+	pop hl	; struct ptr
+	pop de	; sample addr
 	pop bc	; sample page in C
 	push bc
 	push de
@@ -83,7 +83,7 @@ __asm
 	ld (hl),e
 	inc hl
 	inc hl
-	ld	a,c
+	ld a,c
 	and a,#0x3f
 	ld (hl),a
 	ret
@@ -92,9 +92,9 @@ __endasm;
 void chcmd_LoopAddr(HUS_CHCMD* chan, unsigned char* sample, unsigned char page) __naked
 {	chan, sample, page;
 __asm
-	pop	af
-	pop	hl	; struct ptr
-	pop	de	; sample addr
+	pop af
+	pop hl	; struct ptr
+	pop de	; sample addr
 	pop bc	; sample page in C
 	push bc
 	push de
@@ -104,13 +104,13 @@ __asm
 	ld a,#6
 	add a,l
 	ld l,a
-	jr	nc,1$
+	jr nc,1$
 	inc h
 1$:	
 	ld (hl),e
 	inc hl
 	inc hl
-	ld	a,c
+	ld  a,c
 	and a,#0x3f
 	ld (hl),a
 	inc hl
@@ -122,8 +122,8 @@ __endasm;
 void chcmd_Control(HUS_CHCMD* chan, unsigned char cmd) __naked
 {	chan, cmd;
 __asm
-	pop	af
-	pop	hl	; struct ptr
+	pop af
+	pop hl	; struct ptr
 	pop bc	; cmd in C
 	push bc
 	push hl
@@ -138,8 +138,8 @@ __endasm;
 void chcmd_FractStep(HUS_CHCMD* chan, unsigned int step) __naked
 {	chan, step;
 __asm
-	pop	af
-	pop	hl	; struct ptr
+	pop af
+	pop hl	; struct ptr
 	pop bc	; fract step
 	push bc
 	push hl
@@ -155,8 +155,8 @@ __endasm;
 void chcmd_VolRL(HUS_CHCMD* chan, unsigned char VL, unsigned char VR) __naked
 {	chan, VL, VR;
 __asm
-	pop	af
-	pop	hl	; struct ptr
+	pop af
+	pop hl	; struct ptr
 	pop bc	; VL / VR
 	push bc
 	push hl
@@ -172,8 +172,8 @@ __endasm;
 void chcmd_VolR(HUS_CHCMD* chan, unsigned char VR) __naked
 {	chan, VR;
 __asm
-	pop	af
-	pop	hl	; struct ptr
+	pop af
+	pop hl	; struct ptr
 	pop bc	; VR in C
 	push bc
 	push hl
@@ -187,8 +187,8 @@ __endasm;
 void chcmd_VolL(HUS_CHCMD* chan, unsigned char VL) __naked
 {	chan, VL;
 __asm
-	pop	af
-	pop	hl	; struct ptr
+	pop af
+	pop hl	; struct ptr
 	pop bc	; VL in C
 	push bc
 	push hl
@@ -202,8 +202,8 @@ __endasm;
 void chcmd_SEND(HUS_CHCMD* table, HUS_CHCMD* dest) __naked
 {	table, dest;
 __asm
-	pop	af
-	pop	hl	; struct ptr
+	pop af
+	pop hl	; struct ptr
 	pop de	; dest
 	push de
 	push hl
@@ -217,9 +217,9 @@ unsigned int Get_HUS_TickCnt(void) __naked
 {
 __asm
 	ld bc,#_HUS_BASE+2
-	in	l,(c)
+	in l,(c)
 	inc bc
-	in	h,(c)
+	in h,(c)
 	ret
 __endasm;
 }
@@ -241,9 +241,9 @@ unsigned int Get_HUS_AudioTmr(void) __naked
 {
 __asm
 	ld bc,#_HUS_BASE+4
-	in	l,(c)
+	in l,(c)
 	inc bc
-	in	h,(c)
+	in h,(c)
 	ret
 __endasm;
 }
