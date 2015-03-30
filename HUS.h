@@ -19,10 +19,10 @@ __sfr __banked __at   HUS_BASE + 7 HUS_SampVol;
 #define HUS_SIGNED	1 << 5
 #define HUS_NORETRIG	0      // ?
 #define HUS_RETRIGGED	1 << 2 // ?
-#define HUS_CH_OFF	0x00
-#define HUS_CH_NOLOOP	0x01
-#define HUS_CH_FWDLOOP	0x02
-#define HUS_CH_BIDILOOP	0x03
+#define HUS_CH_OFF	0
+#define HUS_CH_NOLOOP	1
+#define HUS_CH_FWDLOOP	2
+#define HUS_CH_BIDILOOP	3
 
 typedef struct {
 	unsigned char StartAddrLo;
