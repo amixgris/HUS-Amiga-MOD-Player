@@ -1,4 +1,4 @@
-Расчеты значений частот cдля HUS
+Расчеты значений частот для HUS
 
 1. Для издания ЦАПом HUS звука требуемой частоты t_freq (target frequency) сэмплом, оцифрованным
 с частотой d_freq (digitized frequency) при частоте смешения HUS mix_greq (mixing frequency) необходимо
