@@ -242,7 +242,7 @@ __asm
 	ret
 __endasm;
 }
-void Send_HUS_TickCnt(unsigned int time) __naked
+void Send_HUS_AudioTmr(unsigned int time) __naked
 { time;
 __asm
 	pop af
